@@ -25,6 +25,31 @@ def ProxyLoc():
     lib.locatorPlacement('thoriac_vertibrae_C01_C', 2057, 2732)
 
 
+def jointSetup():
+    #Spine IK chain
+    cmds.select(d=True)
+
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C19_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_01_jnt')
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C16_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_02_jnt')
+    cmds.joint(lib.project_Name + '_ikSpine_02_jnt', e=True, zso=True, oj='xyz')
+
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C13_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_03_jnt')
+    cmds.joint(lib.project_Name + '_ikSpine_03_jnt', e=True, zso=True, oj='xyz')
+
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C08_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_04_jnt')
+    cmds.joint(lib.project_Name + '_ikSpine_04_jnt', e=True, zso=True, oj='xyz')
+
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C05_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_05_jnt')
+    cmds.joint(lib.project_Name + '_ikSpine_05_jnt', e=True, zso=True, oj='xyz')
+
+    cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C01_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_06_jnt')
+    cmds.joint(lib.project_Name + '_ikSpine_06_jnt', e=True, zso=True, oj='xyz')
+
+    cmds.select(lib.project_Name + '_ikSpine_01_jnt')
+    cmds.joint(e=True, zso=True, oj='xyz', secondaryAxisOrient='yup', ch=True)
+
+    cmds.select(lib.project_Name + '_ikSpine_06_jnt')
+    cmds.joint(e=True, zso=True, oj='none')
 
 
 
