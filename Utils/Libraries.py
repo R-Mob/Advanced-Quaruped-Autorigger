@@ -42,6 +42,8 @@ def locatorPlacement(skeletonName,vertexOne,vertexTwo):
     #we get two list and average the values inside zip
     LocatorPos = [(x1 + x2)/2 for (x1, x2) in zip(vertexPosOne, vertexPosTwo)]
     tempLocator = cmds.spaceLocator(name = f"{skeletonName}_ProxyLocator",p=LocatorPos)
-    #center pivto the locator
+    #center pivot the locator
     cmds.xform(tempLocator , cp=1)
+    return tempLocator
+
 
