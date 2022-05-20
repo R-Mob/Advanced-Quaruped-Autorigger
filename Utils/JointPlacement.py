@@ -43,11 +43,15 @@ def ProxyLoc():
     spineLoc19 =lib.locatorPlacement('thoriac_vertibrae_C01_C', 2057, 2732)
     cmds.setAttr(spineLoc19[0] + 'Shape.localPositionX', 0)
 
+    cmds.group(spineLoc19,spineLoc18,spineLoc17,spineLoc16,spineLoc15,spineLoc14,spineLoc13,spineLoc14
+               ,spineLoc13,spineLoc12,spineLoc11,spineLoc10,spineLoc09,spineLoc08,spineLoc07,spineLoc06,
+               spineLoc05,spineLoc04,spineLoc03,spineLoc02,spineLoc01, n = "SpineLoc_grp")
 
 def jointSetup():
     #Spine IK chain
     cmds.select(d=True)
 
+    # joint creation : Spine
     cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C19_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_01_jnt')
     cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C16_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_02_jnt')
     cmds.joint(lib.project_Name + '_ikSpine_02_jnt', e=True, zso=True, oj='xyz')
@@ -63,12 +67,15 @@ def jointSetup():
 
     cmds.joint(p=(cmds.objectCenter('thoriac_vertibrae_C01_C_ProxyLocator',gl=1)), n=lib.project_Name + '_ikSpine_06_jnt')
     cmds.joint(lib.project_Name + '_ikSpine_06_jnt', e=True, zso=True, oj='xyz')
-
+    # joint orientation
     cmds.select(lib.project_Name + '_ikSpine_01_jnt')
     cmds.joint(e=True, zso=True, oj='xyz', secondaryAxisOrient='yup', ch=True)
-
     cmds.select(lib.project_Name + '_ikSpine_06_jnt')
     cmds.joint(e=True, zso=True, oj='none')
+
+    cmds.select(d=True)
+
+
 
 
 
