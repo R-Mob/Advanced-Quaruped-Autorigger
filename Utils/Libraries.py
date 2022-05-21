@@ -36,6 +36,25 @@ def controlType( ctrlType,ctrlName,scale,parentGrpName):
         cmds.scale(scale, scale, scale, clavicleCtrl + '.cv[0:14]')
         cmds.group(ctrlName, n=parentGrpName)
 
+    elif ctrlType == 'midbody':
+        midbodyCtrl = cmds.curve(p=[[16.534, 151.064, 23.714], [0.0, 158.031, 23.714], [-16.534, 151.064, 23.714],
+                                    [-35.268, 119.06, 19.27], [-19.44, 84.038, 20.365], [-0.0, 80.634, 20.365],
+                                    [19.44, 84.038, 20.365], [35.268, 119.06, 19.27]],d=3,n=ctrlName)
+
+
+        cmds.scale(scale, scale, scale, midbodyCtrl + '.cv[0:7]')
+        cmds.group(ctrlName, n=parentGrpName)
+
+    elif ctrlType == 'hip':
+        hipCtrl = cmds.curve(p=[[30.0, 118.268, -45.637], [30.0, 119.783, -41.928], [30.126, 121.802, -38.32], [28.875, 128.553, -27.229],
+                                [27.073, 141.562, -36.108], [16.24, 154.802, -35.507], [-0.0, 158.208, -35.84], [-16.24, 154.802, -35.507],
+                                [-27.073, 141.562, -36.108], [-28.875, 128.553, -27.229], [-30.126, 121.802, -38.32], [-30.0, 119.783, -41.928],
+                                [-30.0, 118.268, -45.637]],d=5,n=ctrlName)
+
+
+
+        cmds.scale(scale, scale, scale, hipCtrl + '.cv[0:12]')
+        cmds.group(ctrlName, n=parentGrpName)
 
 
 # Locator placement : Proxy locator in joint positions
