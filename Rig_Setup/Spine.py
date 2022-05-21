@@ -87,8 +87,8 @@ def ikSpineSystem():
     cmds.setAttr(pn+'_ikSplineHandle.dTwistControlEnable',1)
     cmds.setAttr(pn + '_ikSplineHandle.dWorldUpType', 4)
 
-    cmds.connectAttr('hipTwistLoc.worldMatrix','Ciervo_ikSplineHandle.dWorldUpMatrix',f=1)
-    cmds.connectAttr('clavTwistLoc.worldMatrix', 'Ciervo_ikSplineHandle.dWorldUpMatrixEnd', f=1)
+    cmds.connectAttr('hipTwistLoc.worldMatrix','Ciervo_ikSplineHandle.dWorldUpMatrix',force = True)
+    cmds.connectAttr('clavTwistLoc.worldMatrix', 'Ciervo_ikSplineHandle.dWorldUpMatrixEnd', force = True)
 
 
 
