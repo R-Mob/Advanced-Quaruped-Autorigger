@@ -55,7 +55,7 @@ def ikSpineSystem():
 
     cmds.joint(p=(0,142.05,-29.625),n=pn+'_ikHipCtrl_jnt')
     cmds.select(d=True)
-    cmds.joint(p=(0, 1136.886, 23.252), n=pn + '_ikMidCtrl_jnt')
+    cmds.joint(p=(0, 136.886, 23.252), n=pn + '_ikMidCtrl_jnt')
     cmds.select(d=True)
     cmds.joint(p=(0, 132.478, 60.495), n=pn + '_ikClavicleCtrl_jnt')
     cmds.select(d=True)
@@ -71,8 +71,9 @@ def ikSpineSystem():
     cmds.skinCluster(pn+'_Spine_ikCurve',pn+'_ikClavicleCtrl_jnt',pn+'_ikMidCtrl_jnt',pn+'_ikHipCtrl_jnt',
                      n = 'ikBind')
 
-    cmds.group(pn+'_ikHipCtrl_grp',pn+'_ikMidCtrl_grp',pn+'_ikClavicleCtrl_grp',n=pn+'ikCtrl_grp')
-    cmds.parent(pn+'ikCtrl_grp',pn+'_ikSpineSystem_grp')
+    cmds.group(pn+'_ikHipCtrl_grp',pn+'_ikMidCtrl_grp',pn+'_ikClavicleCtrl_grp',n=pn+'_ikCtrl_grp')
+    cmds.xform(cp=1)
+    cmds.parent(pn+'_ikCtrl_grp',pn+'_ikSpineSystem_grp')
 
     #advanced twist controls
 
@@ -89,6 +90,8 @@ def ikSpineSystem():
 
     cmds.connectAttr('hipTwistLoc.worldMatrix','Ciervo_ikSplineHandle.dWorldUpMatrix',force = True)
     cmds.connectAttr('clavTwistLoc.worldMatrix', 'Ciervo_ikSplineHandle.dWorldUpMatrixEnd', force = True)
+
+
 
 
 
