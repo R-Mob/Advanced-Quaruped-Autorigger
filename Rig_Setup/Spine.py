@@ -68,8 +68,32 @@ def ikSpineSystem():
     cmds.select(d=True)
     #skinning to curve
 
-    cmds.skinCluster('Ciervo_Spine_ikCurve','Ciervo_ikClavicleCtrl_jnt','Ciervo_ikMidCtrl_jnt','Ciervo_ikHipCtrl_jnt',
+    cmds.skinCluster(pn+'_Spine_ikCurve',pn+'_ikClavicleCtrl_jnt',pn+'_ikMidCtrl_jnt',pn+'_ikHipCtrl_jnt',
                      n = 'ikBind')
+
+    cmds.group(pn+'_ikHipCtrl_grp',pn+'_ikMidCtrl_grp',pn+'_ikClavicleCtrl_grp',n=pn+'ikCtrl_grp')
+    cmds.parent(pn+'ikCtrl_grp',pn+'_ikSpineSystem_grp')
+
+    #advanced twist controls
+
+    cmds.spaceLocator(p=(0,200,-29.69),n='hipTwistLoc',a=0)
+    cmds.move(0, 142.05, -29.629, 'hipTwistLoc.scalePivot','hipTwistLoc.rotatePivot', absolute=True)
+    cmds.parent('hipTwistLoc',pn+'_ikHipCtrl_jnt')
+
+    cmds.spaceLocator(p=(0, 200, 60.495), n='clavTwistLoc')
+    cmds.move(0, 132.478, 60.495, 'clavTwistLoc.scalePivot', 'clavTwistLoc.rotatePivot', absolute=True)
+    cmds.parent('clavTwistLoc', pn + '_ikClavicleCtrl_jnt')
+
+    cmds.setAttr(pn+'_ikSplineHandle.dTwistControlEnable',1)
+    cmds.setAttr(pn + '_ikSplineHandle.dWorldUpType', 4)
+
+    cmds.connectAttr('hipTwistLoc.worldMatrix','Ciervo_ikSplineHandle.dWorldUpMatrix',f=1)
+    cmds.connectAttr('clavTwistLoc.worldMatrix', 'Ciervo_ikSplineHandle.dWorldUpMatrixEnd', f=1)
+
+
+
+
+
 
 
 
