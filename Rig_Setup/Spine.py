@@ -31,6 +31,8 @@ def ikSpineSystem():
     cmds.move(0, 136.886, 23.252, pn + '_ikClavicleCtrl.scalePivot', pn + '_ikClavicleCtrl.rotatePivot', absolute=True)
     cmds.move(0, 132.478, 60.495, pn+'_ikClavicleCtrl_grp.scalePivot', pn+'_ikClavicleCtrl_grp.rotatePivot', absolute=True)
     cmds.select(d=True)
+    lib.bakeCustomToolPivot(1,1,pn+'_ikClavicleCtrl_grp')
+    cmds.makeIdentity(pn+'_ikClavicleCtrl',apply = True)
     #mid IK ctrl
     lib.controlType('midbody',pn+'_ikMidCtrl',1,pn+'_ikMidCtrl_grp')
     cmds.closeCurve(pn+'_ikMidCtrl',
@@ -45,11 +47,15 @@ def ikSpineSystem():
     cmds.move(0, 136.886, 23.252, pn+'_ikMidCtrl_grp.scalePivot', pn+'_ikMidCtrl_grp.rotatePivot', absolute=True)
     cmds.move(0, 136.886, 23.252, pn + '_ikMidCtrl.scalePivot', pn + '_ikMidCtrl.rotatePivot', absolute=True)
     cmds.select(d=True)
+    lib.bakeCustomToolPivot(1,1,pn+'_ikMidCtrl_grp')
+    cmds.makeIdentity(pn+'_ikMidCtrl',apply = True)
     # back IK ctrl
     lib.controlType('hip',pn+'_ikHipCtrl',1,pn+'_ikHipCtrl_grp')
     cmds.move(0, 142.05, -29.629, pn + '_ikHipCtrl.scalePivot', pn + '_ikHipCtrl.rotatePivot', absolute=True)
     cmds.move(0, 142.05, -29.629, pn+'_ikHipCtrl_grp.scalePivot', pn+'_ikHipCtrl_grp.rotatePivot', absolute=True)
     cmds.select(d=True)
+    lib.bakeCustomToolPivot(1,1,pn+'_ikHipCtrl_grp')
+    cmds.makeIdentity(pn+'_ikHipCtrl',apply = True)
 
     #control joints for spine
 
@@ -90,6 +96,8 @@ def ikSpineSystem():
 
     cmds.connectAttr('hipTwistLoc.worldMatrix','Ciervo_ikSplineHandle.dWorldUpMatrix',force = True)
     cmds.connectAttr('clavTwistLoc.worldMatrix', 'Ciervo_ikSplineHandle.dWorldUpMatrixEnd', force = True)
+
+
 
 
 
