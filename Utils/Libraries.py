@@ -70,7 +70,7 @@ def locatorPlacement(skeletonName,vertexOne,vertexTwo):
     cmds.xform(tempLocator , cp=1)
     return tempLocator
 
-def bakeCustomToolPivot(pos=1, ori=1 , objectName=''):
+def bakeCustomToolPivot(pos=1, ori=1 , objectName=None):
     # Check 1) must have an object(s) selected
     cmds.select(objectName)
     objects = cmds.ls(sl=1, transforms=1)
